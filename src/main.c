@@ -10,7 +10,8 @@ long getBytes(char *str, size_t start, size_t len) {
     for (int i = 0; i < len; i ++) {
         char *byteStart = str + (start + i) * 2;
         memcpy(byteString, byteStart, 2);
-        attr += strtol(byteString, NULL, 16) << ((len - i - 1) * 3);
+        printf("byte %d: %s (shifted %d)\n", i, byteString, (int)(i));
+        attr += strtol(byteString, NULL, 16) << (i * 3);
     }
 
     return attr;
