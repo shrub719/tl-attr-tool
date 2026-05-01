@@ -31,8 +31,14 @@ int main(int argc, char **argv) {
             uint16_t startTick = (uint16_t)getBytes(attrStr, 0, 2);
             printf("StartTick: %d\n", startTick);
 
-            uint32_t offsetTick = (int32_t)getBytes(attrStr, 2, 4);
+            int32_t offsetTick = (int32_t)getBytes(attrStr, 2, 4);
             printf("OffsetTick: %d\n", offsetTick);
+
+            uint16_t speed = (uint16_t)getBytes(attrStr, 6, 2);
+            printf("Speed: %d\n", speed);
+
+            uint8_t wordNum = (uint8_t)getBytes(attrStr, 8, 1);
+            printf("WordNum: %d\n", wordNum);
 
             printf("\n");
         }
