@@ -2,5 +2,5 @@ build:
     gcc -o target/main src/main.c
 
 [default]
-run: build
-    ./target/main
+run attributes="0x6C0A0F000000860003020103000000000000000E00150009000000000000000000000000000000005A0200005E02000062020000660200006A0200006E0200002400": build
+    ./target/main {{attributes}}
