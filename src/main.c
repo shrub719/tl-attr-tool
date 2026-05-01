@@ -12,9 +12,10 @@ long getBytes(char *str, size_t start, size_t len) {
         char *byteStart = str + (start + i) * 2;
         memcpy(byteString, byteStart, 2);
         //printf("byte %d: %s (shifted %d)\n", i, byteString, (int)(i));
-        attr += strtol(byteString, NULL, 16) << (i * 3);
+        attr += strtol(byteString, NULL, 16) << (i * 8);
     }
 
+    //printf("attribute: %lx\n", attr);
     return attr;
 }
 
@@ -24,7 +25,7 @@ int main(int argc, char **argv) {
     char buff[200];
 
     while (fgets(buff, 200, fptr)) {
-        if (strlen(buff) >= 4 && ( strncmp("attr", buff, 4) == 0 )) {
+        if (strlen(buff) >= 10 && ( strncmp("attribute:", buff, 10) == 0 )) {
             char* attrStr = buff + 13;
 
             uint16_t startTick = (uint16_t)getBytes(attrStr, 0, 2);
