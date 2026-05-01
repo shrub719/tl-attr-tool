@@ -1,6 +1,6 @@
 build:
-    gcc -o target/main src/main.c
+    gcc -o target/main src/main.c src/attributes.c
 
 [default]
-run attributes="./msbt/test.msbt.txt": build
-    ./target/main {{attributes}}
+run file="./msbt/test.msbt.txt" set="0": build
+    ./target/main {{file}} {{set}}
