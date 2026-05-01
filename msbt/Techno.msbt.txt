@@ -1,0 +1,212 @@
+﻿%%%
+bigEndian: false
+bigEndianLabels: false
+version: 3
+encoding: utf-16
+hasNLI1: false
+hasLBL1: true
+labelGroups: 101
+hasATR1: true
+attributeStringPool: [1,1,1,1,1,1,0,0
+,0,0,0,0,0,0,0,4,4,4,0,0
+,0,4,4,4,0,0,0,4,4,4,0,1,0,1,0,4,4,4,0,1,0,1,0,1,0,1,4,0,1,4,0,1,4,0,0,1,0,0,1,4,0,1,4,0,1,4,0,0,0,1,0,4,0,4,0,4,0,1,0,0,1,0,4,0,4,0,4,0,1,0,0,1,0,4,0,4,0,4,0,1,0,0,0,0,0]
+hasTSY1: false
+hasTXTW: false
+%%%
+
+---
+label: NewText_00
+attribute: 0xE0010F0000000000020504000000000000000000000F0000000000000000000000000000000000002003000024030000280300002C03000030030000340300002400
+---
+{{Song_WordStretch mode="Whole_Word"}}
+{{Song_Chorus target="0" ratio="11892"}}
+{{Song_Chorus target="1" ratio="13348"}}
+{{Song_Chorus target="2" ratio="15874"}}
+{{SongNote buffer="0" pitch="G#3" length="4"}}
+{{SongNote buffer="1" pitch="G#3" length="5"}}
+{{SongNote buffer="2" pitch="G#3" length="4"}}
+{{SongNote buffer="3" pitch="G#3" length="3"}}
+{{SongRest length="3"}}
+{{SongNote buffer="4" pitch="G#3" length="5"}}
+{{SongNote buffer="5" pitch="G#3" length="7"}}
+{{SongNote buffer="6" pitch="G#3" length="8"}}
+{{SongNote buffer="7" pitch="G#3" length="9"}}
+
+---
+label: NewText_01
+attribute: 0x30090F000000EA000502020302010000000000420043002800040008000000000000000000000001380300003C03000044030000480300004C030000500300003000
+---
+{{LenAdjust_First val="4"}}
+{{LenAdjust_Second val="4"}}
+{{LenAdjust_SecondLast val="5"}}
+{{LenAdjust_Last val="6"}}
+{{Song_WordStretch mode="Whole_Word"}}
+{{SongNote buffer="0" pitch="C#4" length="4"}}
+{{SongNote buffer="1" pitch="C#4" length="4"}}
+{{SongNote buffer="2" pitch="C#4" length="4"}}
+{{Song_WordStretch mode="Only_Last"}}
+{{SongNote buffer="3" pitch="C#4" length="4"}}
+{{SongNote buffer="4" pitch="C#4" length="6"}}
+{{SongRest length="2"}}
+{{SongNote buffer="5" pitch="A3" length="4"}}
+{{SongNote buffer="6" pitch="B3" length="4"}}
+{{SongNote buffer="7" pitch="A3" length="3"}}
+{{SongNote buffer="8" pitch="B3" length="5"}}
+{{SongNote buffer="9" pitch="B3" length="6"}}
+
+---
+label: NewText_02
+attribute: 0x240C87000000EA00050302020201000000000029004200440045000800000000000000000000000254030000580300005C0300006003000064030000680300003000
+---
+{{LenAdjust_SecondLast val="8"}}
+{{LenAdjust_Last val="8"}}
+{{Song_WordStretch mode="Whole_Word"}}
+{{SongNote buffer="0" pitch="C#4" length="4"}}
+{{SongNote buffer="1" pitch="C#4" length="5"}}
+{{Song_WordStretch mode="Only_Last"}}
+{{SongNote buffer="2" pitch="C#4" length="3"}}
+{{SongNote buffer="3" pitch="C#4" length="6"}}
+{{SongRest length="2"}}
+{{SongNote buffer="4" pitch="A3" length="4"}}
+{{SongNote buffer="5" pitch="E4" length="4"}}
+{{SongNote buffer="6" pitch="E4" length="4"}}
+{{SongRest length="0"}}
+{{SongNote buffer="7" pitch="D4" length="8"}}
+{{SongNote buffer="8" pitch="C#4" length="8"}}
+
+
+
+---
+label: NewText_03
+attribute: 0x700E1E000000EA0001040000000000000000000E00000000000000000000000000000000000000036C03000070030000780300007C03000080030000840300002400
+---
+{{LenAdjust_Last val="24"}}
+{{Song_WordStretch mode="Only_Last"}}
+{{SongNote buffer="0" pitch="B3" length="4"}}
+{{SongNote buffer="1" pitch="A3" length="3"}}
+{{SongNote buffer="2" pitch="B3" length="5"}}
+{{Pitch_Smooth val="0"}}
+{{Song_WordStretch mode="Only_Vowel"}}
+{{SongNote buffer="3" pitch="A3" length="4"}}
+{{SongNote buffer="4" pitch="A3" length="4"}}
+{{SongNote buffer="5" pitch="A3" length="4"}}
+{{SongNote buffer="6" pitch="A3" length="3"}}
+{{SongNote buffer="7" pitch="F#3" length="4"}}
+{{SongNote buffer="8" pitch="F#3" length="5"}}
+
+---
+label: NewText_04
+attribute: 0xB01087000000EA000402020102000000000000460047000900480000000000000000000000000003880300008C0300009003000094030000980300009C0300002400
+---
+{{LenAdjust_First val="4"}}
+{{LenAdjust_SecondLast val="16"}}
+{{LenAdjust_Last val="24"}}
+{{Pitch_Smooth val="0"}}
+{{SongNote buffer="0" pitch="F#3" length="4"}}
+{{SongNote buffer="1" pitch="A3" length="2"}}
+{{SongNote buffer="2" pitch="F#3" length="2"}}
+{{SongNote buffer="3" pitch="F#3" length="4"}}
+{{Song_WordStretch mode="Whole_Word"}}
+{{SongNote buffer="4" pitch="A3" length="4"}}
+{{SongNote buffer="5" pitch="A3" length="4"}}
+{{SongNote buffer="6" pitch="A3" length="1"}}
+{{SongNote buffer="7" pitch="B3" length="1"}}
+{{SongNote buffer="7" pitch="A3" length="1"}}
+{{SongNote buffer="7" pitch="B3" length="5"}}
+{{Song_WordStretch mode="Only_Vowel"}}
+{{SongNote buffer="8" pitch="B3" length="2"}}
+{{SongNote buffer="9" pitch="A3" length="10"}}
+{{SongNote buffer="10" pitch="F#3" length="12"}}
+
+---
+label: NewText_05
+attribute: 0xB01337000000EA000301010100000000000000100012001300000000000000000000000000000003A0030000A8030000B0030000B4030000B8030000BC0300001200
+---
+{{Pitch_Smooth val="0"}}
+{{SongNote buffer="0" pitch="F#3" length="5"}}
+{{SongRest length="3"}}
+{{SongNote buffer="1" pitch="A3" length="5"}}
+{{SongRest length="3"}}
+{{SongNote buffer="2" pitch="C#4" length="6"}}
+{{SongRest length="2"}}
+
+---
+label: NewText_06
+attribute: 0x001532000000EA000302010400000000000000490014000F00000000000000000000000000000004C0030000C8030000D0030000D8030000E4030000F00300002A00
+---
+{{Pitch_Smooth val="0"}}
+{{LenAdjust_First val="12"}}
+{{LenAdjust_SecondLast val="4"}}
+{{LenAdjust_Last val="18"}}
+{{Song_WordStretch mode="Only_Last"}}
+{{SongNote buffer="0" pitch="E4" length="12"}}
+{{SongNote buffer="1" pitch="C#4" length="15"}}
+{{SongNote buffer="2" pitch="C#4" length="4"}}
+{{Song_WordStretch mode="Only_Vowel"}}
+{{SongNote buffer="3" pitch="B3" length="4"}}
+{{SongNote buffer="4" pitch="A3" length="4"}}
+{{SongNote buffer="5" pitch="B3" length="4"}}
+{{SongNote buffer="6" pitch="B3" length="6"}}
+
+---
+label: NewText_07
+attribute: 0xD01737000000EA00030103020000000000000001002A004A00000000000000000000000000000004FC03000000040000080400000C04000018040000240400001E00
+---
+{{LenAdjust_Second val="8"}}
+{{LenAdjust_SecondLast val="4"}}
+{{LenAdjust_Last val="12"}}
+{{SongNote buffer="0" pitch="E3" length="4"}}
+{{SongNote buffer="1" pitch="B3" length="4"}}
+{{SongNote buffer="2" pitch="B3" length="4"}}
+{{SongNote buffer="3" pitch="B3" length="4"}}
+{{SongNote buffer="4" pitch="C#4" length="8"}}
+{{SongNote buffer="5" pitch="A3" length="4"}}
+
+
+---
+label: NewText_08
+attribute: 0x001B32000000EA0001020000000000000000004B00000000000000000000000000000000000000043004000034040000380400004004000048040000500400001200
+---
+{{Pitch_Smooth val="0"}}
+{{SongNote buffer="0" pitch="E4" length="12"}}
+{{SongNote buffer="1" pitch="C#4" length="16"}}
+
+
+---
+label: NewText_09
+attribute: 0x501C32000000EA0003020202000000000000004C004D004E000000000000000000000000000000055804000060040000640400006C040000740400007C0400001E00
+---
+{{Song_WordStretch mode="Only_Last"}}
+{{LenAdjust_First val="4"}}
+{{LenAdjust_Second val="4"}}
+{{LenAdjust_SecondLast val="4"}}
+{{LenAdjust_Last val="4"}}
+{{SongNote buffer="0" pitch="A3" length="4"}}
+{{SongNote buffer="1" pitch="E4" length="4"}}
+{{SongNote buffer="2" pitch="E4" length="4"}}
+{{SongNote buffer="3" pitch="E4" length="4"}}
+{{SongNote buffer="4" pitch="F#4" length="4"}}
+
+---
+label: NewText_10
+attribute: 0x701D32000000EA0005030102010200000000002B0005004F00110050000000000000000000000005840400008C0400009004000098040000A0040000A80400002A00
+---
+{{LenAdjust_First val="4"}}
+{{LenAdjust_Second val="4"}}
+{{LenAdjust_Last val="34"}}
+{{SongNote buffer="0" pitch="B3" length="4"}}
+{{SongNote buffer="1" pitch="A3" length="4"}}
+{{SongNote buffer="2" pitch="B3" length="4"}}
+{{SongNote buffer="3" pitch="B3" length="8"}}
+{{SongRest length="4"}}
+{{Pitch_Smooth val="0"}}
+{{SongNote buffer="4" pitch="C#4" length="8"}}
+{{SongNote buffer="5" pitch="B3" length="8"}}
+{{SongNote buffer="6" pitch="B3" length="8"}}
+{{SongNote buffer="7" pitch="A3" length="10"}}
+
+---
+label: END
+attribute: 0x40230000000000000000000000000000000000000000000000000000000000000000000000000000B0040000B8040000BC040000C0040000C4040000C80400002400
+---
+
