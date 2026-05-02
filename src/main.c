@@ -26,7 +26,7 @@ void writeBytes(char *str, long data, size_t len) {
     uint8_t byte;
     
     for (int i = 0; i < len; i++) {
-        byte = (data >> (i * 8)) % 0xFF;
+        byte = (data >> (i * 8)) % 0x100;
         sprintf(dataStr + (i * 2), "%02X", byte);
     }
 
@@ -114,7 +114,7 @@ void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
                             (uint16_t)getBytes(attrStr, attr.start, 2)
                         );
                         */
-                        // parse????
+                        // i don't think i can just do atoi on all of these forever
                         writeBytes(attrStrPtr, atoi(dataStr), 2);
                         attrStrPtr += 4;
                         break;
