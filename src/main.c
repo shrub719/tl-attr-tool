@@ -89,6 +89,8 @@ void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
 
     char previousBuff[200];
     char buff[200];
+    char attrStr[200];
+    char attrBuff[200];
 
     while (fgets(buff, 200, msbtPtr)) {
         if (strlen(buff) >= 10 && ( strncmp("attribute:", buff, 10) == 0 )) {
@@ -96,12 +98,14 @@ void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
             char* label = previousBuff + 7;
             label[strlen(label) - 1] = '\0';
             */
-            char attrStr[200];
             char *attrStrPtr = attrStr; // fuckk
-            fscanf(attrPtr, "%*[^\n]%*c");  // skip label
+            fgets(attrBuff, 200, attrPtr);  // skip label
 
             for (int i = 0; i < attributeSets[setID].len; i++) {
                 Attr attr = attributeSets[setID].attributes[i];
+
+                fgets(attrBuff, 200, attrPtr);
+                char *dataStr = strchr(attrBuff, '=') + 1;
 
                 switch (attr.type) {
                     case UINT16_T:
@@ -111,27 +115,27 @@ void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
                         );
                         */
                         // parse????
-                        writeBytes(attrStrPtr, (long)(3), 2);
+                        writeBytes(attrStrPtr, atoi(dataStr), 2);
                         attrStrPtr += 4;
                         break;
                     case INT32_T:
-                        writeBytes(attrStrPtr, (long)(3), 4);
+                        writeBytes(attrStrPtr, atoi(dataStr), 4);
                         attrStrPtr += 8;
                         break;
                     case BYTE:
-                        writeBytes(attrStrPtr, (long)(3), 1);
+                        writeBytes(attrStrPtr, atoi(dataStr), 1);
                         attrStrPtr += 2;
                         break;
                 }
             }
 
-            *attrStrPtr = '\0'; // is this.. correct? or even necessary?
-            fscanf(attrPtr, "%*[^\n]%*c");  // skip newline
+            fgets(attrBuff, 200, attrPtr);  // skip newline
 
-            printf("attribute: 0x%s\n", attrStr);
             fprintf(outPtr, "attribute: 0x%s\n", attrStr);
+            fflush(outPtr);
         } else {
             fprintf(outPtr, "%s", buff);
+            fflush(outPtr);
         }
         
         strcpy(previousBuff, buff);
