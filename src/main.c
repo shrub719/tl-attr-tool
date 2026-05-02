@@ -132,10 +132,8 @@ void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
             fgets(attrBuff, 200, attrPtr);  // skip newline
 
             fprintf(outPtr, "attribute: 0x%s\n", attrStr);
-            fflush(outPtr);
         } else {
             fprintf(outPtr, "%s", buff);
-            fflush(outPtr);
         }
         
         strcpy(previousBuff, buff);
