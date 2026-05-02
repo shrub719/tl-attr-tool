@@ -14,7 +14,7 @@ You want to edit the song itself (e.g. `Metal.msbt`), not the lyrics (e.g. `Meta
 tl-song-tool [command]
 
     extract [msbt] [output]
-        Extract the attribute values from a song's MSBT file into human readable and editable TOML file.
+        Extract the attribute values from a song's MSBT file into a human readable and editable TOML file.
         msbt - decompressed .msbt.txt file
 
     merge [attr] [msbt] [output]
