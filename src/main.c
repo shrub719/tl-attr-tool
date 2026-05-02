@@ -10,7 +10,7 @@ long getBytes(char *str, size_t start, size_t len) {
     char byteString[2];
     long attr = 0;
 
-    for (int i = 0; i < len; i ++) {
+    for (int i = 0; i < len; i++) {
         char *byteStart = str + (start + i) * 2;
         memcpy(byteString, byteStart, 2);
         // printf("byte %d: %s (shifted %d)\n", i, byteString, (int)(i));
@@ -22,7 +22,17 @@ long getBytes(char *str, size_t start, size_t len) {
 }
 
 void writeBytes(char *str, long data, size_t len) {
-    strcpy(str, "data");
+    char dataStr[50];
+    uint8_t byte;
+    
+    for (int i = 0; i < len; i++) {
+        byte = (data >> (i * 8)) % 0xFF;
+        sprintf(dataStr + (i * 2), "%02X", byte);
+    }
+
+    dataStr[len*2] = '\0';
+
+    strcpy(str, dataStr);
 }
 
 void extract(char *msbtFilename, char *outputFilename) {
@@ -102,20 +112,20 @@ void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
                         */
                         // parse????
                         writeBytes(attrStrPtr, (long)(3), 2);
-                        attrStrPtr += 2;
+                        attrStrPtr += 4;
                         break;
                     case INT32_T:
                         writeBytes(attrStrPtr, (long)(3), 4);
-                        attrStrPtr += 4;
+                        attrStrPtr += 8;
                         break;
                     case BYTE:
                         writeBytes(attrStrPtr, (long)(3), 1);
-                        attrStrPtr += 1;
+                        attrStrPtr += 2;
                         break;
                 }
             }
 
-            *attrStrPtr = '\0'; // is this.. correct?
+            *attrStrPtr = '\0'; // is this.. correct? or even necessary?
             fscanf(attrPtr, "%*[^\n]%*c");  // skip newline
 
             printf("attribute: 0x%s\n", attrStr);
