@@ -21,6 +21,10 @@ long getBytes(char *str, size_t start, size_t len) {
     return attr;
 }
 
+void writeBytes(char *str, long data, size_t len) {
+    strcpy(str, "data");
+}
+
 void extract(char *msbtFilename, char *outputFilename) {
     FILE *msbtPtr = fopen(msbtFilename, "r");
     FILE *outPtr = fopen(outputFilename, "w");
@@ -64,10 +68,70 @@ void extract(char *msbtFilename, char *outputFilename) {
     };
 
     fclose(msbtPtr);
+    fclose(outPtr);
 }
 
 void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
+    FILE *attrPtr = fopen(attrFilename, "r");
+    FILE *msbtPtr = fopen(msbtFilename, "r");
+    FILE *outPtr = fopen(outputFilename, "w");
+    int setID = 0;
 
+    char previousBuff[200];
+    char buff[200];
+
+    while (fgets(buff, 200, msbtPtr)) {
+        if (strlen(buff) >= 10 && ( strncmp("attribute:", buff, 10) == 0 )) {
+            /* check labels?
+            char* label = previousBuff + 7;
+            label[strlen(label) - 1] = '\0';
+            */
+            char attrStr[200];
+            char *attrStrPtr = attrStr; // fuckk
+            attrPtr++;  // skip label
+
+            for (int i = 0; i < attributeSets[setID].len; i++) {
+                Attr attr = attributeSets[setID].attributes[i];
+
+                switch (attr.type) {
+                    case UINT16_T:
+                        /* could also check name
+                        fprintf(outPtr, "%s = %d\n", attr.name,
+                            (uint16_t)getBytes(attrStr, attr.start, 2)
+                        );
+                        */
+                        // parse????
+                        writeBytes(attrStrPtr, (long)(3), 2);
+                        attrStrPtr += 2;
+                        break;
+                    case INT32_T:
+                        writeBytes(attrStrPtr, (long)(3), 4);
+                        attrStrPtr += 4;
+                        break;
+                    case BYTE:
+                        writeBytes(attrStrPtr, (long)(3), 1);
+                        attrStrPtr += 1;
+                        break;
+                }
+            }
+
+            *attrStrPtr = '\0'; // is this.. correct?
+            attrPtr++;  // skip newline
+
+            printf("attribute: 0x%s\n", attrStr);
+            fprintf(outPtr, "attribute: 0x%s\n", attrStr);
+            fflush(outPtr);
+        } else {
+            fprintf(outPtr, "%s", buff);
+            fflush(outPtr);
+        }
+        
+        strcpy(previousBuff, buff);
+    };
+
+    fclose(attrPtr);
+    fclose(msbtPtr);
+    fclose(outPtr);
 }
 
 int main(int argc, char **argv) {
@@ -77,7 +141,7 @@ int main(int argc, char **argv) {
         char *msbtFilename = argv[2];
         char *outputFilename = argv[3];
         extract(msbtFilename, outputFilename);
-    } else if (strlen(command) >= 7 && (strncmp("replace", command, 7) == 0)) {
+    } else if (strlen(command) >= 5 && (strncmp("merge", command, 5) == 0)) {
         char *attrFilename = argv[2];
         char *msbtFilename = argv[3];
         char *outputFilename = argv[4];
