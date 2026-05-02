@@ -88,7 +88,7 @@ void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
             */
             char attrStr[200];
             char *attrStrPtr = attrStr; // fuckk
-            attrPtr++;  // skip label
+            fscanf(attrPtr, "%*[^\n]%*c");  // skip label
 
             for (int i = 0; i < attributeSets[setID].len; i++) {
                 Attr attr = attributeSets[setID].attributes[i];
@@ -116,14 +116,12 @@ void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
             }
 
             *attrStrPtr = '\0'; // is this.. correct?
-            attrPtr++;  // skip newline
+            fscanf(attrPtr, "%*[^\n]%*c");  // skip newline
 
             printf("attribute: 0x%s\n", attrStr);
             fprintf(outPtr, "attribute: 0x%s\n", attrStr);
-            fflush(outPtr);
         } else {
             fprintf(outPtr, "%s", buff);
-            fflush(outPtr);
         }
         
         strcpy(previousBuff, buff);
