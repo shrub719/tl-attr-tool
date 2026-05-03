@@ -84,6 +84,7 @@ size_t getLength(AttrType type) {
         case IDK4: return 4;
         case IDK2: return 2;
         case IDK1: return 1;
+        default: return 1;
     }
 }
 

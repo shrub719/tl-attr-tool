@@ -1,7 +1,7 @@
 name := "tl-song-tool"
 
 build:
-    gcc -o ./target/{{name}} src/main.c src/attributes.c
+    gcc -Wall -o ./target/{{name}} src/*.c
 
 extract set="./msbt/Song.msbp.txt" msbt="./msbt/Metal.msbt.txt" output="./target/extracted.txt": build
     ./target/{{name}} extract {{set}} {{msbt}} {{output}}

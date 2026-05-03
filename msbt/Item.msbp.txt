@@ -1,0 +1,140 @@
+﻿BigEndian: false
+Version: 3
+Encoding: UTF8
+
+Attribute Definitions (ATI1/ALB1/ALI1)
+======================================
+FileID [Int16][0]
+RegionJP [Enum][2] {Disable,Enable}
+RegionUS [Enum][3] {Disable,Enable}
+RegionEU [Enum][4] {Disable,Enable}
+RegionKR [Enum][5] {Disable,Enable}
+Price [UInt32][6]
+PriceUS [UInt32][10]
+PriceEU [UInt32][14]
+PriceKR [UInt32][18]
+Shop [Byte][22]
+Mii [Byte][23]
+Food_FirstDaily [Byte][24]
+BoxSize [Enum][25] {BoxSize_None,BoxSize_Nomral,BoxSize_Small,BoxSize_Big}
+Effect [Enum][26] {None,Steam00,Steam01,Steam02}
+Food_Type_JP [Enum][27] {Japanese,Western,Alacarte,Dessert,Drink}
+Food_Type_USEU [Enum][28] {MainDishes,SmallDishes,Refreshments,Drinks}
+Food_Type_KR [Enum][29] {Korean,Foreign,Refreshments,Drink}
+Food_Quantity [Enum][30] {Quantity_None,Quantity_Low,Quantity_Mid,Quantity_High}
+Food_Season [Enum][31] {Season_None,Season_Spring,Season_Summer,Season_Autumn,Season_Winter}
+Food_Attr_Sweet [Byte][32]
+Food_Attr_Spicy [Byte][33]
+Food_Attr_Salty [Byte][34]
+Food_Attr_Sour [Byte][35]
+Food_Attr_Oily [Byte][36]
+Food_Attr_Cool [Byte][37]
+Food_Attr_Hot [Byte][38]
+Food_Attr_Awful [Byte][39]
+Food_Attr_Confectionery [Byte][40]
+Food_Attr_Fruit [Byte][41]
+Food_Attr_Vegetable [Byte][42]
+Food_Attr_Rice [Byte][43]
+Food_Attr_Bread [Byte][44]
+Food_Attr_Meat [Byte][45]
+Food_Attr_Fish [Byte][46]
+Food_Attr_Egg [Byte][47]
+Food_Attr_Japanese [Byte][48]
+Food_Attr_Western [Byte][49]
+Food_Attr_Chinese [Byte][50]
+Food_Attr_Italian [Byte][51]
+Food_Attr_Noodle [Byte][52]
+Food_Attr_Luxury [Byte][53]
+Food_Attr_American [Byte][54]
+Food_Attr_Asian [Byte][55]
+Food_Attr_British [Byte][56]
+Food_Attr_French [Byte][57]
+Food_Attr_German [Byte][58]
+Food_Attr_Spanish [Byte][59]
+Food_Attr_Junk [Byte][60]
+Food_Attr_Korean [Byte][61]
+Food_NTR_ID [Int16][62]
+Food_Taste_A [Enum][64] {00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15}
+Food_Taste_B [Enum][65] {00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15}
+Food_Taste_C [Enum][66] {00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15}
+Food_Taste_D [Enum][67] {00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15}
+Food_Se_Type [Enum][68] {SE_MII_DRINK,SE_MII_EAT_01,SE_MII_EAT_02,SE_MII_EAT_03,SE_MII_EAT_04,SE_MII_EAT_05,SE_MII_EAT_06,SE_MII_EAT_07}
+RatioA [Byte][69]
+RatioB [Byte][70]
+RatioC [Byte][71]
+RatioD [Byte][72]
+Treasure_Type [Enum][73] {TreasureToken,TreasureSouvenir,TreasureDream,TreasureRare}
+Catalog [Enum][74] {false,true}
+Food_Date_Month_JP [Byte][75]
+Food_Date_Day_JP [Byte][76]
+Food_Date_Month_US [Byte][77]
+Food_Date_Day_US [Byte][78]
+Food_Date_Month_EU [Byte][79]
+Food_Date_Day_EU [Int32][80]
+Food_Date_Month_KR [Byte][84]
+Food_Date_Day_KR [Int32][85]
+Food_FirstCatalog [Byte][89]
+ForIslanderOnly [Byte][90]
+FPriceEU_UK [UInt32][91]
+FPriceEU_AN [UInt32][95]
+FPriceEU_Other [UInt32][99]
+FPriceEU_FR [UInt32][103]
+FPriceEU_IT [UInt32][107]
+FPriceEU_GE [UInt32][111]
+FPriceEU_SP [UInt32][115]
+Food_FirstDaily_US_En [Byte][119]
+Food_FirstDaily_EU_En [Byte][120]
+Food_FirstDaily_EU_Fr [Byte][121]
+Food_FirstDaily_EU_Ge [Byte][122]
+Food_FirstDaily_EU_It [Byte][123]
+Food_FirstDaily_EU_Sp [Byte][124]
+Food_FirstDaily_KR_Kr [Byte][125]
+Throw_US [Enum][126] {Disable,Enable}
+Throw_EU [Enum][127] {Disable,Enable}
+Throw_KR [Enum][128] {Disable,Enable}
+
+Tag Definitions (TGG2/TAG2/TGP2/TGL2)
+=====================================
+[0] System
+  [0:0] Ruby
+    rt [String]
+  [0:1] Font
+    face [String]
+  [0:2] Size
+    percent [UInt16]
+  [0:3] Color
+    r [Byte]
+    g [Byte]
+    b [Byte]
+    a [Byte]
+    name [String]
+  [0:4] PageBreak
+
+Style Definitions (SYL3/SLB1)
+=============================
+AlbumList_U_AU_Intro: RegionWidth=270, FontIndex=0, BaseColorIndex=-1, LineNumber=2
+ItemName: RegionWidth=172, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+
+Source Files (CTI1)
+===================
+Equip/Equip_Attr.mstxt
+Equip/Equip_Desc.mstxt
+Equip/Equip_Name.mstxt
+Equip/Equip_Name_P.mstxt
+Etc/Etc_Name.mstxt
+Food/Food_Attr.mstxt
+Food/Food_Desc.mstxt
+Food/Food_Name.mstxt
+Food/Food_Name_P.mstxt
+Special/Special_Attr.mstxt
+Special/Special_Desc.mstxt
+Special/Special_Name.mstxt
+Special/Special_Name_P.mstxt
+Tool/Tool_Attr.mstxt
+Tool/Tool_Desc.mstxt
+Tool/Tool_Name.mstxt
+Tool/Tool_Name_P.mstxt
+Treasure/Treasure_Attr.mstxt
+Treasure/Treasure_Desc.mstxt
+Treasure/Treasure_Name.mstxt
+Treasure/Treasure_Name_P.mstxt
