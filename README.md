@@ -45,9 +45,9 @@ Finally, I would run ```tl-song-tool merge Song.msbp.txt attributes.toml Metal.m
 I would finish it off by importing `cool_new_metal.txt` into `Metal.msbt` 
 using MSBT Editor and saving to `Song_US_English_LZ.bin`.
 
-The new `Song_US_English_LZ.bin` is patched with your very own changes to
-`attributes.toml` and you can use it to mod Tomodachi Life by placing it
-into your LayeredFS modded romfs folder.
+The new `Song_US_English_LZ.bin` is patched with my very own changes to
+`attributes.toml` and I can use it to mod Tomodachi Life by placing it
+into my LayeredFS modded romfs folder.
 
 <!---->
 
