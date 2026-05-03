@@ -1,24 +1,29 @@
 # Tomodachi Life (3DS) Song Tool
 
-A command line tool for editing the Tomodachi Life 3DS Concert Hall songs.
+A command line tool for editing the attributes of MSBT files from Tomodachi Life 3DS.
 
 ## Usage
 
 Still very WIP, but it is useable!
 
-This is intended to be used on `.msbt.txt` files extracted from `Song_[...].bin` using [MSBT Editor](https://msbt-editor.aeonsake.com/). 
-The filename differs by localisation. 
-You want to edit the song itself (e.g. `Metal.msbt`), not the lyrics (e.g. `Metal_Lyrics.msbt`).
+Although I plan to support importing an `.msbp.txt` file for your own custom attribute
+definitions, for now the only available ones are set `0` (Songs) and set `1` (Items).
 
 ```
 tl-song-tool [command]
 
-    extract [msbt] [output]
-        Extract the attribute values from a song's MSBT file into a human readable and editable TOML file.
+    extract [set] [msbt] [output]
+        Extract the attribute values from an MSBT file into a human readable and 
+        editable TOML file.
+
+        set - which set of MSBP attribute definitions to use
         msbt - decompressed .msbt.txt file
 
-    merge [attr] [msbt] [output]
-        Merge an edited attribute file with the MSBT file it was extracted from to produce an edited MSBT file.
+    merge [set] [attr] [msbt] [output]
+        Merge an edited attribute file with the MSBT file it was extracted from 
+        to produce an edited MSBT file.
+
+        set - which set of MSBP attribute definitions to use
         attr - extracted attribute file
         msbt - original decompressed .msbt.txt file
 ```
