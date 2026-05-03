@@ -1,5 +1,73 @@
 #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
 #include "attributes.h"
+
+// this cannot be the way to return it
+AttrSet getDefinitions(char *msbpFilename) {
+    FILE *msbpPtr = fopen(msbpFilename, "r");
+
+    AttrSet attrSet;
+
+    char *nameEnd = strchr(msbpFilename, '.');
+    size_t nameLen = (nameEnd - msbpFilename) / sizeof(char);
+    strncpy(attrSet.name, msbpFilename, nameLen);
+    attrSet.name[nameLen] = '\0';
+
+    attrSet.len = 0;
+    char buff[200];
+    bool reachedDefinitions = false;
+    bool reachedEnd = false;
+
+    while (fgets(buff, 200, msbpPtr) && !reachedEnd) {
+        if (!reachedDefinitions) {
+            if (strlen(buff) >= 21 && (strncmp("Attribute Definitions", buff, 21) == 0)) {
+                reachedDefinitions = true;
+            }
+        } else {
+            if (strlen(buff) >= 1 && (strncmp("\n", buff, 1) == 0)) {
+                reachedEnd = true;
+            } else {
+                int i = attrSet.len;
+                char name[50];
+                char type[50];
+                size_t start;
+
+                // what the hell is sscanf
+                sscanf(buff, "%49s [%49[^]]][%zu]", name, type, &start);
+                
+                attrSet.attributes[i].name = name;
+                attrSet.attributes[i].start = start;
+
+                if (strcmp("Int16", type) == 0) {
+                    attrSet.attributes[i].type = UINT16_T;
+                } else if (strcmp("Enum", type) == 0) {
+                    attrSet.attributes[i].type = BYTE;
+                } else if (strcmp("Byte", type) == 0) {
+                    attrSet.attributes[i].type = BYTE;
+                } else if (strcmp("UInt32", type) == 0) {
+                    attrSet.attributes[i].type = INT32_T;
+                } else if (strcmp("UInt16", type) == 0) {
+                    attrSet.attributes[i].type = UINT16_T;
+                } else if (strcmp("Int32", type) == 0) {
+                    attrSet.attributes[i].type = INT32_T;
+                } else if (strcmp("String", type) == 0) {
+                    attrSet.attributes[i].type = INT32_T;
+                } else {
+                    // um!
+                    attrSet.attributes[i].type = BYTE;
+                }
+
+                attrSet.len++;
+            }
+        }
+    }
+
+    fclose(msbpPtr);
+
+    return attrSet;
+}
 
 const AttrSet attributeSets[] = {
     { "Song", 32, {

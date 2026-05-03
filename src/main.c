@@ -43,7 +43,7 @@ void extract(int setID, char *msbtFilename, char *outputFilename) {
     char buff[200];
 
     while (fgets(buff, 200, msbtPtr)) {
-        if (strlen(buff) >= 10 && ( strncmp("attribute:", buff, 10) == 0 )) {
+        if (strlen(buff) >= 10 && (strncmp("attribute:", buff, 10) == 0)) {
             char* label = previousBuff + 7;
             label[strlen(label) - 1] = '\0';
             char* attrStr = buff + 13;
@@ -74,7 +74,7 @@ void extract(int setID, char *msbtFilename, char *outputFilename) {
             fprintf(outPtr, "\n");
         }
         strcpy(previousBuff, buff);
-    };
+    }
 
     fclose(msbtPtr);
     fclose(outPtr);
@@ -135,7 +135,7 @@ void replace(int setID, char *attrFilename, char *msbtFilename, char *outputFile
         }
         
         strcpy(previousBuff, buff);
-    };
+    }
 
     fclose(attrPtr);
     fclose(msbtPtr);

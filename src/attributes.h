@@ -18,3 +18,5 @@ typedef struct {
 
 extern const AttrSet attributeSets[];
 
+AttrSet getDefinitions(char *msbpFilename);
+
