@@ -1,0 +1,620 @@
+﻿BigEndian: false
+Version: 3
+Encoding: UTF8
+
+Color Definitions (CLR1/CLB1)
+=============================
+Strong: #FF0000FF
+Mii: #00FFFFFF
+MiiDialog: #001EFFFF
+MiiTarget: #00FF00FF
+Item: #00FF00FF
+ItemDialog: #00AA3CFF
+ItemLvUp: #FFFF00FF
+Male: #32C8FFFF
+Female: #FF6464FF
+Phrase: #00FF00FF
+
+Attribute Definitions (ATI1/ALB1/ALI1)
+======================================
+StartTick [UInt16][0]
+OffsetTick [Int32][2]
+Speed [UInt16][6]
+WordNum [Byte][8]
+WordType0 [Byte][9]
+WordType1 [Byte][10]
+WordType2 [Byte][11]
+WordType3 [Byte][12]
+WordType4 [Byte][13]
+WordType5 [Byte][14]
+WordType6 [Byte][15]
+WordType7 [Byte][16]
+WordType8 [Byte][17]
+WordType9 [Byte][18]
+WordDefault0 [UInt16][19]
+WordDefault1 [UInt16][21]
+WordDefault2 [UInt16][23]
+WordDefault3 [UInt16][25]
+WordDefault4 [UInt16][27]
+WordDefault5 [UInt16][29]
+WordDefault6 [UInt16][31]
+WordDefault7 [UInt16][33]
+WordDefault8 [UInt16][35]
+WordDefault9 [UInt16][37]
+Line [Byte][39]
+Singer2 [String][40]
+Singer3 [String][44]
+Singer4 [String][48]
+Singer5 [String][52]
+Singer6 [String][56]
+Singer7 [String][60]
+PhraseLength [UInt16][64]
+
+Tag Definitions (TGG2/TAG2/TGP2/TGL2)
+=====================================
+[0] System
+  [0:0] Ruby
+    rt [String]
+  [0:1] Font
+    face [String]
+  [0:2] Size
+    percent [UInt16]
+  [0:3] Color
+    r [Byte]
+    g [Byte]
+    b [Byte]
+    a [Byte]
+    name [String]
+  [0:4] PageBreak
+[1] Mii
+  [1:0] Nickname
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [1:1] Lastname
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [1:2] Firstname
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [1:3] Creator
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [1:4] Character
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+    suffix [Enum] {true,false}
+  [1:5] Character16
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+    suffix [Enum] {true,false}
+  [1:6] LongPhrase
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [1:7] ShortPhrase
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+    situation [Enum] {Good,Nerves,Despond,Worry}
+  [1:8] FirstPerson
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [1:9] FirstPersonW
+    type [Enum] {Text,Voice}
+  [1:10] MyNickname
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [1:11] BloodType
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [1:12] FavoriteColor
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+[2] MiiTalk
+  [2:0] Speaker
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:1] FriendA
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:2] FriendB
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:3] FriendC
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:4] FriendD
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:5] Lovers
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:6] Couple
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:7] BestFriend
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:8] Child
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:9] ChildApart
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:10] Father
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:11] Mother
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:12] ExLovers
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:13] Divorce
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+  [2:14] BrotherSister
+    type [Enum] {Text,Voice}
+    conversion [Enum] {None,Kana}
+[3] Date
+  [3:0] N_Year
+    buffer [Byte]
+    zero [Enum] {False,True}
+    format [Enum] {YYYY,YY}
+    type [Enum] {Text,Voice}
+  [3:1] N_Month
+    buffer [Byte]
+    zero [Enum] {False,True}
+  [3:2] N_Day
+    buffer [Byte]
+    zero [Enum] {False,True}
+  [3:3] N_Hour
+    buffer [Byte]
+    zero [Enum] {False,True}
+    format [Enum] {12-hour,24-hour}
+  [3:4] N_Minute
+    buffer [Byte]
+    zero [Enum] {False,True}
+  [3:5] N_Second
+    buffer [Byte]
+    zero [Enum] {False,True}
+  [3:6] S_Month
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [3:7] S_MonthSh
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [3:8] S_Day
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [3:9] S_Hour
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+    format [Enum] {12-hour,24-hour}
+  [3:10] S_Week
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [3:11] S_WeekSh
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [3:12] S_Season
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+  [3:13] S_AMPM
+    buffer [Byte]
+    type [Enum] {Text,Voice}
+[4] Reference
+  [4:0] Body
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+    set [Enum] {False,True}
+  [4:1] Headwear
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+  [4:2] Room
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+  [4:3] Food
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+  [4:4] Tool
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+  [4:5] Treasure
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+  [4:6] Equip
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+  [4:7] SpecialProduct
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+  [4:8] Item
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    sp [Enum] {Singular,Plural}
+  [4:9] Number
+    buffer [Byte]
+    info [Enum] {Num,Price,NoMark}
+    zero [Byte]
+  [4:10] News
+    buffer [Byte]
+    info [Enum] {Month,Day,Hour,DateDiff}
+  [4:11] Island
+    type [Enum] {Name,Voice}
+    info [Enum] {Mine,Others}
+  [4:12] Player
+    buffer [Int32]
+    info [Enum] {Country}
+  [4:13] Age
+    buffer [Byte]
+  [4:14] SongGenre
+    buffer [Byte]
+  [4:15] Counter(JP)
+    buffer [Byte]
+    type [Enum] {Name,Voice}
+    counter [Enum] {None,D_ConsonantEuphony,Normal}
+  [4:16] IslandAddress
+    type [Enum] {Name,Voice}
+    info [Enum] {Mine,Others}
+    kind [Enum] {Sea,Islands,Num0,Num1}
+  [4:17] IslandSub
+    type [Enum] {Name,Voice}
+    info [Enum] {Mine,Others}
+  [4:18] Currency
+[5] Song
+  [5:0] Note
+    buffer [Byte]
+    pitch [Enum] {G1,G#1,A1,A#1,B1,C2,C#2,D2,D#2,E2,F2,F#2,G2,G#2,A2,A#2,B2,C3,C#3,D3,D#3,E3,F3,F#3,G3,G#3,A3,A#3,B3,C4,C#4,D4,D#4,E4,F4,F#4,G4,G#4,A4,A#4,B4,C5,C#5,D5,D#5,E5,F5,F#5,G5,G#5,A5,A#5,B5,C6}
+    length [Byte]
+  [5:1] Rest
+    length [Byte]
+  [5:2] Text
+    buffer [Byte]
+  [5:3] Pitch
+    pitch [Enum] {G1,G#1,A1,A#1,B1,C2,C#2,D2,D#2,E2,F2,F#2,G2,G#2,A2,A#2,B2,C3,C#3,D3,D#3,E3,F3,F#3,G3,G#3,A3,A#3,B3,C4,C#4,D4,D#4,E4,F4,F#4,G4,G#4,A4,A#4,B4,C5,C#5,D5,D#5,E5,F5,F#5,G5,G#5,A5,A#5,B5,C6}
+[6] Fixed
+  [6:0] Width
+    pixel [UInt16]
+[7] Article
+  [7:0] Def
+  [7:1] Indef
+  [7:2] DefGE
+    case [Byte]
+  [7:3] IndefGE
+    case [Byte]
+[8] Gender
+  [8:0] Mii
+    buffer [Byte]
+    male [String]
+    female [String]
+  [8:1] MyMii
+    male [String]
+    female [String]
+  [8:2] MiiTalk
+    type [Enum] {Speaker,FriendA,FriendB,FriendC,FriendD,Lovers,Couple,BestFriend,Child,ChildApart,ExLovers,Divorce,BrotherSister}
+    male [String]
+    female [String]
+  [8:3] MiiSpeaker
+    male [String]
+    female [String]
+  [8:4] Body
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+  [8:5] Headwear
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+  [8:6] Room
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+  [8:7] Food
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+  [8:8] Tool
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+  [8:9] Treasure
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+  [8:10] Equip
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+  [8:11] SpecialProduct
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+  [8:12] Item
+    buffer [Byte]
+    masculine [String]
+    feminine [String]
+    neuter [String]
+[9] SingularPlural
+  [9:0] Body
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:1] Headwear
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:2] Room
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:3] Food
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:4] Tool
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:5] Treasure
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:6] Equip
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:7] SpecialProduct
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:8] Item
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    singular [String]
+    plural [String]
+  [9:9] Number
+    buffer [Byte]
+    singular [String]
+    plural [String]
+  [9:10] Hour
+    buffer [Byte]
+    singular [String]
+    plural [String]
+[10] GenderSingularPlural
+  [10:0] Body
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+  [10:1] Headwear
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+  [10:2] Room
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+  [10:3] Food
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+  [10:4] Tool
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+  [10:5] Treasure
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+  [10:6] Equip
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+  [10:7] SpecialProduct
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+  [10:8] Item
+    buffer [Byte]
+    sp [Enum] {Singular,Plural}
+    masculineSingular [String]
+    masculinePlural [String]
+    feminineSingular [String]
+    femininePlural [String]
+    neuterSingular [String]
+    neuterPlural [String]
+[11] Format
+  [11:0] InitialCap
+  [11:1] InitialCapSP
+  [11:2] Elision
+    normal [String]
+    elision [String]
+  [11:3] Particle
+    char [Enum] {none,ha,wo,ga,to,ni,ya,san}
+  [11:4] Patchim
+    patchim [String]
+    nopatchim [String]
+  [11:5] AndSP
+[12] Nuance
+  [12:0] CS_Rate
+    rate [UInt16]
+  [12:1] CS_Vol
+    Vol [Byte]
+  [12:2] CS_Pause
+    len [UInt16]
+  [12:3] CS_Reset
+  [12:4] Echo
+    gain [Byte]
+    delay [UInt16]
+  [12:5] Preset
+    param [Enum] {Default,Idol,Scream,No_Intonation,Subdued_Voice}
+  [12:6] Song_Chorus
+    target [Enum] {0,1,2}
+    ratio [Int32]
+  [12:7] CS_Toi
+    type [Enum] {orth,lhp,nts,pyt,diacritized}
+    orth_text [String]
+  [12:8] CS_Mw
+  [12:9] CS_Tn
+    tn [Enum] {normal,spell,address,sms}
+  [12:10] CS_Wait
+    time [Byte]
+  [12:11] CS_Spell
+    time [UInt16]
+  [12:12] CS_Eos
+    eos [Enum] {false,true}
+  [12:13] CS_ReadMode
+    mode [Enum] {sentence,character,word,line,explicit}
+  [12:14] Song_WordStretch
+    mode [Enum] {Only_Vowel,Only_Top,Only_Last,Whole_Word}
+  [12:15] LenAdjust_First
+    val [SByte]
+  [12:16] LenAdjust_Second
+    val [SByte]
+  [12:17] LenAdjust_SecondLast
+    val [SByte]
+  [12:18] LenAdjust_Last
+    val [SByte]
+  [12:19] Pitch_Smooth
+    val [Byte]
+  [12:20] Pitch_Mod_Width
+    val [Byte]
+  [12:21] Pitch_Mod_Rate
+    val [Byte]
+
+Style Definitions (SYL3/SLB1)
+=============================
+common_Caption_Caption_00: RegionWidth=308, FontIndex=0, BaseColorIndex=-1, LineNumber=2
+common_Caption_U_Caption_00: RegionWidth=384, FontIndex=0, BaseColorIndex=-1, LineNumber=2
+song_Song_song_Title: RegionWidth=216, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word00: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word01: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word02: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word03: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word04: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word05: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word06: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word07: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word08: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word09: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word10: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word11: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word12: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word13: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word14: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word15: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word16: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word17: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word18: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word19: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word20: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word21: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word22: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_song_Word23: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_SongEdit_U: RegionWidth=390, FontIndex=0, BaseColorIndex=-1, LineNumber=6
+song_Song_U_Song_U: RegionWidth=390, FontIndex=0, BaseColorIndex=-1, LineNumber=6
+song_Song_U_SongGe_0: RegionWidth=128, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_SongGe_1: RegionWidth=128, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_SongGe_2: RegionWidth=128, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_SongGe_3: RegionWidth=128, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_SongGe_4: RegionWidth=128, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_SongGe_5: RegionWidth=128, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_IconCross: RegionWidth=110, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_IconA: RegionWidth=60, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+song_Song_U_Name: RegionWidth=390, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+wharf_wharf_BtnCallS: RegionWidth=100, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+wharf_wharf_BtnCall: RegionWidth=100, FontIndex=0, BaseColorIndex=-1, LineNumber=1
+
+Source Files (CTI1)
+===================
+Ballad.mstxt
+Ballad_Lyrics.mstxt
+Enka.mstxt
+Enka_Lyrics.mstxt
+Jpop.mstxt
+Jpop_Lyrics.mstxt
+Metal.mstxt
+Metal_Lyrics.mstxt
+Musical.mstxt
+Musical_Lyrics.mstxt
+Opera.mstxt
+Opera_Lyrics.mstxt
+Rap.mstxt
+Rap_Lyrics.mstxt
+Rock.mstxt
+Rock_Lyrics.mstxt
+Techno.mstxt
+Techno_Lyrics.mstxt
+Title.mstxt
+Word1.mstxt
+Word2.mstxt
+Word3.mstxt
+Word4.mstxt
+Word5.mstxt
+Word6.mstxt

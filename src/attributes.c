@@ -10,10 +10,12 @@ AttrSet getDefinitions(char *msbpFilename) {
 
     AttrSet attrSet;
 
+    // segfault between here
     char *nameEnd = strchr(msbpFilename, '.');
     size_t nameLen = (nameEnd - msbpFilename) / sizeof(char);
     strncpy(attrSet.name, msbpFilename, nameLen);
     attrSet.name[nameLen] = '\0';
+    // and here
 
     attrSet.len = 0;
     char buff[200];

@@ -35,10 +35,11 @@ void writeBytes(char *str, long data, size_t len) {
     strcpy(str, dataStr);
 }
 
-void extract(int setID, char *msbtFilename, char *outputFilename) {
+void extract(char *msbpFilename, char *msbtFilename, char *outputFilename) {
     FILE *msbtPtr = fopen(msbtFilename, "r");
     FILE *outPtr = fopen(outputFilename, "w");
 
+    AttrSet attrSet = getDefinitions(msbpFilename);
     char previousBuff[200];
     char buff[200];
 
@@ -49,8 +50,8 @@ void extract(int setID, char *msbtFilename, char *outputFilename) {
             char* attrStr = buff + 13;
             
             fprintf(outPtr, "[%s]\n", label);
-            for (int i = 0; i < attributeSets[setID].len; i++) {
-                Attr attr = attributeSets[setID].attributes[i];
+            for (int i = 0; i < attrSet.len; i++) {
+                Attr attr = attrSet.attributes[i];
 
                 switch (attr.type) {
                     case UINT16_T:
@@ -80,11 +81,12 @@ void extract(int setID, char *msbtFilename, char *outputFilename) {
     fclose(outPtr);
 }
 
-void replace(int setID, char *attrFilename, char *msbtFilename, char *outputFilename) {
+void replace(char *msbpFilename, char *attrFilename, char *msbtFilename, char *outputFilename) {
     FILE *attrPtr = fopen(attrFilename, "r");
     FILE *msbtPtr = fopen(msbtFilename, "r");
     FILE *outPtr = fopen(outputFilename, "w");
 
+    AttrSet attrSet = getDefinitions(msbpFilename);
     char previousBuff[200];
     char buff[200];
     char attrStr[200];
@@ -99,8 +101,8 @@ void replace(int setID, char *attrFilename, char *msbtFilename, char *outputFile
             char *attrStrPtr = attrStr; // fuckk
             fgets(attrBuff, 200, attrPtr);  // skip label
 
-            for (int i = 0; i < attributeSets[setID].len; i++) {
-                Attr attr = attributeSets[setID].attributes[i];
+            for (int i = 0; i < attrSet.len; i++) {
+                Attr attr = attrSet.attributes[i];
 
                 fgets(attrBuff, 200, attrPtr);
                 char *dataStr = strchr(attrBuff, '=') + 1;
@@ -146,16 +148,16 @@ int main(int argc, char **argv) {
     char *command = argv[1];
 
     if (strlen(command) >= 7 && (strncmp("extract", command, 7) == 0)) {
-        int setID = atoi(argv[2]);
+        char *msbpFilename = argv[2];
         char *msbtFilename = argv[3];
         char *outputFilename = argv[4];
-        extract(setID, msbtFilename, outputFilename);
+        extract(msbpFilename, msbtFilename, outputFilename);
     } else if (strlen(command) >= 5 && (strncmp("merge", command, 5) == 0)) {
-        int setID = atoi(argv[2]);
+        char *msbpFilename = argv[2];
         char *attrFilename = argv[3];
         char *msbtFilename = argv[4];
         char *outputFilename = argv[5];
-        replace(setID, attrFilename, msbtFilename, outputFilename);
+        replace(msbpFilename, attrFilename, msbtFilename, outputFilename);
     }
 
     return 0;
