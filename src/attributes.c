@@ -13,10 +13,13 @@ AttrSet getDefinitions(char *msbpFilename) {
     strcpy(attrSet.name, "Generated");
     attrSet.len = 0;
     char buff[200];
+    char nextBuff[200];
     bool reachedDefinitions = false;
     bool reachedEnd = false;
 
-    while (fgets(buff, 200, msbpPtr) && !reachedEnd) {
+    fgets(buff, 200, msbpPtr);
+
+    while (fgets(nextBuff, 200, msbpPtr) && !reachedEnd) {
         if (!reachedDefinitions) {
             if (strlen(buff) >= 21 && (strncmp("Attribute Definitions", buff, 21) == 0)) {
                 reachedDefinitions = true;
@@ -38,8 +41,8 @@ AttrSet getDefinitions(char *msbpFilename) {
 
                 if (strcmp("Int16", type) == 0) {
                     attrSet.attributes[i].type = UINT16_T;
-                } else if (strcmp("Enum", type) == 0) {
-                    attrSet.attributes[i].type = BYTE;
+                // } else if (strcmp("Enum", type) == 0) {
+                //     attrSet.attributes[i].type = BYTE;
                 } else if (strcmp("Byte", type) == 0) {
                     attrSet.attributes[i].type = BYTE;
                 } else if (strcmp("UInt32", type) == 0) {
@@ -48,16 +51,35 @@ AttrSet getDefinitions(char *msbpFilename) {
                     attrSet.attributes[i].type = UINT16_T;
                 } else if (strcmp("Int32", type) == 0) {
                     attrSet.attributes[i].type = INT32_T;
-                } else if (strcmp("String", type) == 0) {
-                    attrSet.attributes[i].type = INT32_T;
+                // } else if (strcmp("String", type) == 0) {
+                //     attrSet.attributes[i].type = INT32_T;
                 } else {
-                    // um!
-                    attrSet.attributes[i].type = BYTE;
+                    // should probably handle strings properly
+                    // maybe even enums! altho they're p much always bytes
+                    size_t end;
+                    sscanf(nextBuff, "%49s [%49[^]]][%zu]", name, type, &end);
+                    size_t len = end - start;
+
+                    switch (len) {
+                        case 1:
+                            attrSet.attributes[i].type = BYTE;
+                            break;
+                        case 2:
+                            attrSet.attributes[i].type = UINT16_T;
+                            break;
+                        case 4:
+                            attrSet.attributes[i].type = INT32_T;
+                            break;
+                        default:
+                            attrSet.attributes[i].type = BYTE;
+                            break;
+                    }
                 }
 
                 attrSet.len++;
             }
         }
+        strcpy(buff, nextBuff);
     }
 
     fclose(msbpPtr);
