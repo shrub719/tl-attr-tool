@@ -1,7 +1,12 @@
 typedef enum {
-    UINT16_T,
-    INT32_T,
-    BYTE
+    UINT32,
+    INT32,
+    UINT16,
+    INT16,
+    BYTE,
+    IDK4,   // unknown with length 4
+    IDK2,   // default to int repr i guess
+    IDK1,
 } AttrType;
 
 typedef struct {
@@ -16,7 +21,7 @@ typedef struct {
     Attr attributes[100];
 } AttrSet;
 
-extern const AttrSet attributeSets[];
-
 AttrSet getDefinitions(char *msbpFilename);
+
+size_t getLength(AttrType type);
 

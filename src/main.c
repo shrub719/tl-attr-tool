@@ -54,17 +54,42 @@ void extract(char *msbpFilename, char *msbtFilename, char *outputFilename) {
                 Attr attr = attrSet.attributes[i];
 
                 switch (attr.type) {
-                    case UINT16_T:
+                    case UINT32:
+                        fprintf(outPtr, "%s = %d\n", attr.name,
+                            (uint32_t)getBytes(attrStr, attr.start, 2)
+                        );
+                        break;
+                    case INT32:
+                        fprintf(outPtr, "%s = %d\n", attr.name,
+                            (int32_t)getBytes(attrStr, attr.start, 2)
+                        );
+                        break;
+                    case UINT16:
                         fprintf(outPtr, "%s = %d\n", attr.name,
                             (uint16_t)getBytes(attrStr, attr.start, 2)
                         );
                         break;
-                    case INT32_T:
-                        fprintf(outPtr, "%s = %d\n", attr.name, 
-                            (int32_t)getBytes(attrStr, attr.start, 4)
+                    case INT16:
+                        fprintf(outPtr, "%s = %d\n", attr.name,
+                            (int16_t)getBytes(attrStr, attr.start, 2)
                         );
                         break;
                     case BYTE:
+                        fprintf(outPtr, "%s = %d\n", attr.name, 
+                            (uint8_t)getBytes(attrStr, attr.start, 4)
+                        );
+                        break;
+                    case IDK4:
+                        fprintf(outPtr, "%s = %d\n", attr.name,
+                            (uint32_t)getBytes(attrStr, attr.start, 2)
+                        );
+                        break;
+                    case IDK2:
+                        fprintf(outPtr, "%s = %d\n", attr.name, 
+                            (uint16_t)getBytes(attrStr, attr.start, 1)
+                        );
+                        break;
+                    case IDK1:
                         fprintf(outPtr, "%s = %d\n", attr.name, 
                             (uint8_t)getBytes(attrStr, attr.start, 1)
                         );
@@ -81,7 +106,7 @@ void extract(char *msbpFilename, char *msbtFilename, char *outputFilename) {
     fclose(outPtr);
 }
 
-void replace(char *msbpFilename, char *attrFilename, char *msbtFilename, char *outputFilename) {
+void merge(char *msbpFilename, char *attrFilename, char *msbtFilename, char *outputFilename) {
     FILE *attrPtr = fopen(attrFilename, "r");
     FILE *msbtPtr = fopen(msbtFilename, "r");
     FILE *outPtr = fopen(outputFilename, "w");
@@ -102,31 +127,15 @@ void replace(char *msbpFilename, char *attrFilename, char *msbtFilename, char *o
             fgets(attrBuff, 200, attrPtr);  // skip label
 
             for (int i = 0; i < attrSet.len; i++) {
+                fflush(stdout);
                 Attr attr = attrSet.attributes[i];
 
                 fgets(attrBuff, 200, attrPtr);
                 char *dataStr = strchr(attrBuff, '=') + 1;
 
-                switch (attr.type) {
-                    case UINT16_T:
-                        /* could also check name
-                        fprintf(outPtr, "%s = %d\n", attr.name,
-                            (uint16_t)getBytes(attrStr, attr.start, 2)
-                        );
-                        */
-                        // i don't think i can just do atoi on all of these forever
-                        writeBytes(attrStrPtr, atoi(dataStr), 2);
-                        attrStrPtr += 4;
-                        break;
-                    case INT32_T:
-                        writeBytes(attrStrPtr, atoi(dataStr), 4);
-                        attrStrPtr += 8;
-                        break;
-                    case BYTE:
-                        writeBytes(attrStrPtr, atoi(dataStr), 1);
-                        attrStrPtr += 2;
-                        break;
-                }
+                size_t len = getLength(attr.type);
+                writeBytes(attrStrPtr, atoi(dataStr), len);
+                attrStrPtr += len * 2;
             }
 
             fgets(attrBuff, 200, attrPtr);  // skip newline
@@ -157,8 +166,9 @@ int main(int argc, char **argv) {
         char *attrFilename = argv[3];
         char *msbtFilename = argv[4];
         char *outputFilename = argv[5];
-        replace(msbpFilename, attrFilename, msbtFilename, outputFilename);
+        merge(msbpFilename, attrFilename, msbtFilename, outputFilename);
     }
 
     return 0;
 }
+
