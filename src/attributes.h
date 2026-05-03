@@ -25,3 +25,5 @@ AttrSet getDefinitions(char *msbpFilename);
 
 size_t getLength(AttrType type);
 
+AttrType getType(size_t len);
+

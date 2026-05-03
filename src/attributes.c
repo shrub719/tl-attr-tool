@@ -60,20 +60,7 @@ AttrSet getDefinitions(char *msbpFilename) {
                     sscanf(nextBuff, "%49s [%49[^]]][%zu]", name, type, &end);
                     size_t len = end - start;
 
-                    switch (len) {
-                        case 1:
-                            attrSet.attributes[i].type = IDK1;
-                            break;
-                        case 2:
-                            attrSet.attributes[i].type = IDK2;
-                            break;
-                        case 4:
-                            attrSet.attributes[i].type = IDK4;
-                            break;
-                        default:
-                            attrSet.attributes[i].type = IDK1;
-                            break;
-                    }
+                    attrSet.attributes[i].type = getType(len);
                 }
 
                 attrSet.len++;
@@ -97,6 +84,15 @@ size_t getLength(AttrType type) {
         case IDK4: return 4;
         case IDK2: return 2;
         case IDK1: return 1;
+    }
+}
+
+AttrType getType(size_t length) {
+    switch (length) {
+        case 1: return IDK1;
+        case 2: return IDK2;
+        case 4: return IDK4;
+        default: return IDK1;
     }
 }
 
