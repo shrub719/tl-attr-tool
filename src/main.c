@@ -35,10 +35,9 @@ void writeBytes(char *str, long data, size_t len) {
     strcpy(str, dataStr);
 }
 
-void extract(char *msbtFilename, char *outputFilename) {
+void extract(int setID, char *msbtFilename, char *outputFilename) {
     FILE *msbtPtr = fopen(msbtFilename, "r");
     FILE *outPtr = fopen(outputFilename, "w");
-    int setID = 0;
 
     char previousBuff[200];
     char buff[200];
@@ -81,11 +80,10 @@ void extract(char *msbtFilename, char *outputFilename) {
     fclose(outPtr);
 }
 
-void replace(char *attrFilename, char *msbtFilename, char *outputFilename) {
+void replace(int setID, char *attrFilename, char *msbtFilename, char *outputFilename) {
     FILE *attrPtr = fopen(attrFilename, "r");
     FILE *msbtPtr = fopen(msbtFilename, "r");
     FILE *outPtr = fopen(outputFilename, "w");
-    int setID = 0;
 
     char previousBuff[200];
     char buff[200];
@@ -148,14 +146,16 @@ int main(int argc, char **argv) {
     char *command = argv[1];
 
     if (strlen(command) >= 7 && (strncmp("extract", command, 7) == 0)) {
-        char *msbtFilename = argv[2];
-        char *outputFilename = argv[3];
-        extract(msbtFilename, outputFilename);
-    } else if (strlen(command) >= 5 && (strncmp("merge", command, 5) == 0)) {
-        char *attrFilename = argv[2];
+        int setID = atoi(argv[2]);
         char *msbtFilename = argv[3];
         char *outputFilename = argv[4];
-        replace(attrFilename, msbtFilename, outputFilename);
+        extract(setID, msbtFilename, outputFilename);
+    } else if (strlen(command) >= 5 && (strncmp("merge", command, 5) == 0)) {
+        int setID = atoi(argv[2]);
+        char *attrFilename = argv[3];
+        char *msbtFilename = argv[4];
+        char *outputFilename = argv[5];
+        replace(setID, attrFilename, msbtFilename, outputFilename);
     }
 
     return 0;

@@ -13,7 +13,7 @@ typedef struct {
 typedef struct {
     char* name;
     size_t len;
-    Attr attributes[32];
+    Attr attributes[100];
 } AttrSet;
 
 extern const AttrSet attributeSets[];
