@@ -5,13 +5,13 @@ typedef enum {
 } AttrType;
 
 typedef struct {
-    char* name;
+    char name[50];
     size_t start;
     AttrType type;
 } Attr;
 
 typedef struct {
-    char* name;
+    char name[50];
     size_t len;
     Attr attributes[100];
 } AttrSet;

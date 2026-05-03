@@ -10,13 +10,7 @@ AttrSet getDefinitions(char *msbpFilename) {
 
     AttrSet attrSet;
 
-    // segfault between here
-    char *nameEnd = strchr(msbpFilename, '.');
-    size_t nameLen = (nameEnd - msbpFilename) / sizeof(char);
-    strncpy(attrSet.name, msbpFilename, nameLen);
-    attrSet.name[nameLen] = '\0';
-    // and here
-
+    strcpy(attrSet.name, "Generated");
     attrSet.len = 0;
     char buff[200];
     bool reachedDefinitions = false;
@@ -30,7 +24,7 @@ AttrSet getDefinitions(char *msbpFilename) {
         } else {
             if (strlen(buff) >= 1 && (strncmp("\n", buff, 1) == 0)) {
                 reachedEnd = true;
-            } else {
+            } else if (strlen(buff) >= 1 && (strncmp("=", buff, 1) != 0)) {
                 int i = attrSet.len;
                 char name[50];
                 char type[50];
@@ -39,7 +33,7 @@ AttrSet getDefinitions(char *msbpFilename) {
                 // what the hell is sscanf
                 sscanf(buff, "%49s [%49[^]]][%zu]", name, type, &start);
                 
-                attrSet.attributes[i].name = name;
+                strcpy(attrSet.attributes[i].name, name);
                 attrSet.attributes[i].start = start;
 
                 if (strcmp("Int16", type) == 0) {
