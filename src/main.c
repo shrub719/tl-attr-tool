@@ -40,10 +40,10 @@ void extract(char *msbpFilename, char *msbtFilename, char *outputFilename) {
     FILE *outPtr = fopen(outputFilename, "w");
 
     AttrSet attrSet = getDefinitions(msbpFilename);
-    char previousBuff[200];
-    char buff[200];
+    char previousBuff[300];
+    char buff[300];
 
-    while (fgets(buff, 200, msbtPtr)) {
+    while (fgets(buff, 300, msbtPtr)) {
         if (strlen(buff) >= 10 && (strncmp("attribute:", buff, 10) == 0)) {
             char* label = previousBuff + 7;
             label[strlen(label) - 1] = '\0';
@@ -113,25 +113,25 @@ void merge(char *msbpFilename, char *attrFilename, char *msbtFilename, char *out
     FILE *outPtr = fopen(outputFilename, "w");
 
     AttrSet attrSet = getDefinitions(msbpFilename);
-    char previousBuff[200];
-    char buff[200];
-    char attrStr[200];
-    char attrBuff[200];
+    char previousBuff[300];
+    char buff[300];
+    char attrStr[300];
+    char attrBuff[300];
 
-    while (fgets(buff, 200, msbtPtr)) {
+    while (fgets(buff, 300, msbtPtr)) {
         if (strlen(buff) >= 10 && ( strncmp("attribute:", buff, 10) == 0 )) {
             /* check labels?
             char* label = previousBuff + 7;
             label[strlen(label) - 1] = '\0';
             */
             char *attrStrPtr = attrStr; // fuckk
-            fgets(attrBuff, 200, attrPtr);  // skip label
+            fgets(attrBuff, 300, attrPtr);  // skip label
 
             for (int i = 0; i < attrSet.len; i++) {
                 fflush(stdout);
                 Attr attr = attrSet.attributes[i];
 
-                fgets(attrBuff, 200, attrPtr);
+                fgets(attrBuff, 300, attrPtr);
                 char *dataStr = strchr(attrBuff, '=') + 1;
 
                 size_t len = getLength(attr.type);
@@ -139,7 +139,7 @@ void merge(char *msbpFilename, char *attrFilename, char *msbtFilename, char *out
                 attrStrPtr += len * 2;
             }
 
-            fgets(attrBuff, 200, attrPtr);  // skip newline
+            fgets(attrBuff, 300, attrPtr);  // skip newline
 
             fprintf(outPtr, "attribute: 0x%s\n", attrStr);
         } else {
