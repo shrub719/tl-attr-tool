@@ -52,46 +52,47 @@ void extract(char *msbpFilename, char *msbtFilename, char *outputFilename) {
             fprintf(outPtr, "[%s]\n", label);
             for (int i = 0; i < attrSet.len; i++) {
                 Attr attr = attrSet.attributes[i];
+                size_t len = getLength(attr.type);
 
                 switch (attr.type) {
                     case UINT32:
                         fprintf(outPtr, "%s = %d\n", attr.name,
-                            (uint32_t)getBytes(attrStr, attr.start, 2)
+                            (uint32_t)getBytes(attrStr, attr.start, len)
                         );
                         break;
                     case INT32:
                         fprintf(outPtr, "%s = %d\n", attr.name,
-                            (int32_t)getBytes(attrStr, attr.start, 2)
+                            (int32_t)getBytes(attrStr, attr.start, len)
                         );
                         break;
                     case UINT16:
                         fprintf(outPtr, "%s = %d\n", attr.name,
-                            (uint16_t)getBytes(attrStr, attr.start, 2)
+                            (uint16_t)getBytes(attrStr, attr.start, len)
                         );
                         break;
                     case INT16:
                         fprintf(outPtr, "%s = %d\n", attr.name,
-                            (int16_t)getBytes(attrStr, attr.start, 2)
+                            (int16_t)getBytes(attrStr, attr.start, len)
                         );
                         break;
                     case BYTE:
                         fprintf(outPtr, "%s = %d\n", attr.name, 
-                            (uint8_t)getBytes(attrStr, attr.start, 4)
+                            (uint8_t)getBytes(attrStr, attr.start, len)
                         );
                         break;
                     case IDK4:
                         fprintf(outPtr, "%s = %d\n", attr.name,
-                            (uint32_t)getBytes(attrStr, attr.start, 2)
+                            (uint32_t)getBytes(attrStr, attr.start, len)
                         );
                         break;
                     case IDK2:
                         fprintf(outPtr, "%s = %d\n", attr.name, 
-                            (uint16_t)getBytes(attrStr, attr.start, 1)
+                            (uint16_t)getBytes(attrStr, attr.start, len)
                         );
                         break;
                     case IDK1:
                         fprintf(outPtr, "%s = %d\n", attr.name, 
-                            (uint8_t)getBytes(attrStr, attr.start, 1)
+                            (uint8_t)getBytes(attrStr, attr.start, len)
                         );
                         break;
                 }
