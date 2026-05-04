@@ -30,6 +30,11 @@ tl-song-tool [command]
         msbt - original decompressed .msbt.txt file
 ```
 
+**Extract:** using `[msbp]`, extract `[msbt]` to `[output]`.  
+**Merge:** using `[msbp]`, merge `[attr]` onto `[msbt]` and into the new file `[output]`.
+
+### Example
+
 For example, if I wanted to edit the timings of the Metal song, I would use MSBT Editor 
 on the dumped romfs of my Tomodachi Life ROM
 to extract the text files from `Metal.msbt` (in `ArcBase`) and `Song.msbp` in
