@@ -12,14 +12,14 @@ AttrSet getDefinitions(char *msbpFilename) {
 
     strcpy(attrSet.name, "Generated");
     attrSet.len = 0;
-    char buff[200];
-    char nextBuff[200];
+    char buff[300];
+    char nextBuff[300];
     bool reachedDefinitions = false;
     bool reachedEnd = false;
 
-    fgets(buff, 200, msbpPtr);
+    fgets(buff, 300, msbpPtr);
 
-    while (fgets(nextBuff, 200, msbpPtr) && !reachedEnd) {
+    while (fgets(nextBuff, 300, msbpPtr) && !reachedEnd) {
         if (!reachedDefinitions) {
             if (strlen(buff) >= 21 && (strncmp("Attribute Definitions", buff, 21) == 0)) {
                 reachedDefinitions = true;
