@@ -1,4 +1,4 @@
-# Tomodachi Life (3DS) Song Tool
+# Tomodachi Life (3DS) Attribute Tool
 
 A command line tool for editing the attributes of MSBT files from Tomodachi Life 3DS.
 
