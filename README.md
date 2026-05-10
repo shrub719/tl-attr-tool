@@ -11,7 +11,7 @@ It should theoretically work with any Nintendo game that uses the same MSBT
 format, but I haven't tested anything so bewarned.
 
 ```
-tl-song-tool [command]
+tl-attr-tool [command]
 
     extract [msbp] [msbt] [output]
         Extract the attribute values from an MSBT file into a human readable and 
@@ -40,12 +40,12 @@ on the dumped romfs of my Tomodachi Life ROM
 to extract the text files from `Metal.msbt` (in `ArcBase`) and `Song.msbp` in
 `Song_US_English_LZ.bin` to `Metal.msbt.txt` and `Song.msbp.txt`.
 
-I would then run ```tl-song-tool extract Song.msbp.txt Metal.msbt.txt attributes.toml```
+I would then run ```tl-attr-tool extract Song.msbp.txt Metal.msbt.txt attributes.toml```
 
 Then I would use my favourite text editor and edit `attributes.toml`
 to change the `StartTick` values of each line to whatever I want.
 
-Finally, I would run ```tl-song-tool merge Song.msbp.txt attributes.toml Metal.msbt.txt cool_new_metal.txt```
+Finally, I would run ```tl-attr-tool merge Song.msbp.txt attributes.toml Metal.msbt.txt cool_new_metal.txt```
 
 I would finish it off by importing `cool_new_metal.txt` into `Metal.msbt` 
 using MSBT Editor and saving to `Song_US_English_LZ.bin`.

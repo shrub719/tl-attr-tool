@@ -1,4 +1,4 @@
-name := "tl-song-tool"
+name := "tl-attr-tool"
 
 build:
     gcc -Wall -o ./target/{{name}} src/*.c
